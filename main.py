@@ -14,10 +14,24 @@ screen = pg.display.set_mode((screenW,screenH))
 
 pg.display.set_caption("Ascend The Stars!")
 
-class Character():
-    def __init__(self,name,image,):
+class Character(object):
+    def __init__(self,name,image,width,height):
         self.name = name
         self.image = image
+        self.width = width
+        self.height = height
+
+    def draw():
+        pass
+
+class CurrentCharacter(Character):
+    def __init__(self,name,image,width,height,pos):
+        self.name = name
+        self.image = image
+        self.width = width
+        self.height = height
+        self.x,self.y = pos
+
         
 
 class Button(object):
