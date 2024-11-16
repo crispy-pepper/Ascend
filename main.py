@@ -14,10 +14,34 @@ screen = pg.display.set_mode((screenW,screenH))
 
 pg.display.set_caption("Ascend The Stars!")
 
+class Character():
+    def __init__(self,name,image,):
+        self.name = name
+        self.image = image
+        
+
+class Button(object):
+    def __init__(self,image,width, height, pos,function):
+        self.image = image
+        self.width = width
+        self.height = height
+        self.x,self.y = pos
+        self.function = function
+
+        self.rect = pg.draw.rect(screen,(0,0,0),(self.x,self.y,self.width,self.height))
+
+    def on_click(self):
+        x, y = pg.mouse.get_pos()
+        
+        if self.rect.collidepoint(x, y):
+            if event.type == pg.MOUSEBUTTONDOWN:
+                if pg.mouse.get_pressed()[0]:
+                    self.function()
+
+
 
 def updateScreen():
     pass
-
 
 
 mainloop = True
