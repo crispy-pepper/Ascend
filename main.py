@@ -16,7 +16,7 @@ screen = pg.display.set_mode((screenW,screenH))
 
 pg.display.set_caption("Ascend The Stars!")
 
-characters = ["prot.jpg", "star.png", "galaxy.png", "nebula.png"]
+characters = ["C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\prot.jpg", "C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\star.png", "C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\galaxy.png", "C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\nebula.png"]
 
 class Character(object):
     def __init__(self,name,image,width,height,pos):
@@ -91,31 +91,33 @@ class CurrentCharacter(Character):
         if len(self.images) > 14 and stage == 0:
             self.images.clear()
             stage += 1
-            self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\atom1.png")
+            self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\atom1.png")
             collidables = []   
             self.name = "hydro"   
             generate("hydro","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\atom1.png",20,(0,screenW),(0,screenH),25,25)
-        elif len(self.images) >= 15 and stage == 1:
+        elif len(self.images) >= 14 and stage == 1:
             self.images.clear()
             stage += 1
-            self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\star.png")
+            self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\star.png")
             collidables = []   
             self.name = "atom1"   
             generate("atom1","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\star.png",15,(0,screenW),(0,screenH),30,30)
         elif len(self.images) > 14 and stage == 2:
             self.images.clear()
             stage += 1
-            self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\galaxy.png")
+            self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\galaxy.png")
             collidables = []   
             self.name = "star"   
             generate("star","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\galaxy.png",5,(0,screenW),(0,screenH),50,50)
         elif len(self.images) > 4 and stage == 3:
             self.images.clear()
             stage += 1
-            self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\nebula.png")
+            self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\nebula.png")
             collidables = []   
             self.name = "star"   
-            generate("star","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\nebula.png",3,(0,screenW),(0,screenH),100,100)
+            generate("star","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\nebula.png",10,(0,screenW),(0,screenH),100,100)
+        elif len(self.images) > 3 and stage == 4:
+            stage += 1
 
 
     def draw(self,screen):
@@ -163,7 +165,7 @@ def draw_legend():
     if show_legend:
         screen.blit(legend_image, legend_rect.topleft)
 
-    
+
 
 
 def updateScreen():
@@ -206,6 +208,7 @@ message = ''
 
 
 my_font = pg.font.SysFont('Comic Sans MS', 20)
+over_font = pg.font.SysFont('Comic Sans MS', 80)
 m = my_font.render(message, False, (0, 255, 255))
 
 while mainloop:
@@ -216,14 +219,20 @@ while mainloop:
         if event.type == pg.QUIT:
             mainloop = False
             exit()
+        while stage == 5:
+            screen.fill((0,0,0))
+            game_over = over_font.render("Game Over", False, (255, 255, 255))
+            screen.blit(game_over, (100, 150))
+            pg.display.update()
+            
+    if stage != 5:
+        message = facts[player.name][count%len(facts[player.name])]
+        m = my_font.render(message, False, (0, 255, 255))
+    
+        if (pg.time.get_ticks()-start_ticks)/1000 >= 3:
+            start_ticks=pg.time.get_ticks()
+            count += 1
 
-    message = facts[player.name][count%len(facts[player.name])]
-    m = my_font.render(message, False, (0, 255, 255))
-
-    if (pg.time.get_ticks()-start_ticks)/1000 >= 3:
-        start_ticks=pg.time.get_ticks()
-        count += 1
 
 
-
-    updateScreen()
+        updateScreen()
