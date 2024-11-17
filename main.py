@@ -2,6 +2,7 @@ import pygame as pg
 import time
 import random as rand
 import sys
+from facts import facts
 rand.seed(420)
 
 
@@ -162,11 +163,11 @@ def updateScreen():
 
 stage = 0
 mainloop = True
-player = CurrentCharacter("name", "C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\prot.png",25,25,(screenW//2,screenH//2),2)
+player = CurrentCharacter("prot", "C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\prot.png",25,25,(screenW//2,screenH//2),2)
 
 currentBackground = "C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\Section1.png"
 collidables = []
-generate("name","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\prot.png",30,(0,screenW),(0,screenH),20,20)
+generate("prot","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\prot.png",30,(0,screenW),(0,screenH),20,20)
 
 legend_image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\legend.png")
 legend_rect = legend_image.get_rect(topleft=(screenW - 150, 10))  # adjust position as needed
