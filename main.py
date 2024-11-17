@@ -17,8 +17,6 @@ clock = pg.time.Clock()
 
 pg.display.set_caption("Ascend The Stars!")
 
-characters = ["C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\prot.jpg", "C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\star.png", "C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\galaxy.png", "C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\nebula.png"]
-
 class Character(object):
     def __init__(self,name,image,width,height,pos):
         self.name = name
