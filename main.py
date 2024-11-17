@@ -11,8 +11,9 @@ pg.font.init()
 
 clock = pg.time.Clock()
 
-screenW,screenH = pg.display.Info().current_w-100, pg.display.Info().current_h-100
+screenW,screenH = 800, 600
 screen = pg.display.set_mode((screenW,screenH))
+clock = pg.time.Clock()
 
 pg.display.set_caption("Ascend The Stars!")
 
@@ -131,13 +132,13 @@ class CurrentCharacter(Character):
 
 class Button(object):
     def __init__(self,image,width, height, pos,function):
-        self.image = image
         self.width = width
         self.height = height
         self.x,self.y = pos
         self.function = function
+        self.on = False
 
-        self.rect = pg.draw.rect(screen,(0,0,0),(self.x,self.y,self.width,self.height))
+        self.rect = pg.Rect(self.x,self.y,self.width,self.height)
 
     def on_click(self):
         x, y = pg.mouse.get_pos()
@@ -146,6 +147,9 @@ class Button(object):
             if event.type == pg.MOUSEBUTTONDOWN:
                 if pg.mouse.get_pressed()[0]:
                     self.function()
+    
+    def draw(self):
+        pg.draw.rect(screen,(255,255,0),self.rect)
 
 def generate(name,image, integer, rangex,rangey, width,height):
     global collidables
@@ -160,33 +164,32 @@ def drawBackground(image):
     image = pg.transform.scale(image, (screenW, screenH))
     screen.blit(image, (0, 0))
 
+def legendfunc():
+    global show_legend
+    show_legend = not show_legend
+
 
 def draw_legend():
-    if show_legend:
-        screen.blit(legend_image, legend_rect.topleft)
-
-
-
+    screen.blit(legend_image, (0,0))
 
 def updateScreen():
     drawBackground(currentBackground)
-    draw_legend()
+    if show_legend:
+        draw_legend()
     for x in collidables:
         x.draw()
-
+    Legend.draw()
+    my_font = pg.font.SysFont('Comic Sans MS', 15)
+    f = my_font.render("Legend", False, (0,0,0))
+    screen.blit(f,(20,15))
     player.run()
     player.draw(screen)
     player.transform()
 
-    mouse_x, mouse_y = pg.mouse.get_pos()
-    # check if its hovering over here
-    if legend_rect.collidepoint(mouse_x, mouse_y):
-        show_legend = True
-    else:
-        show_legend = False
-
+    
     text_rect = m.get_rect(center=(screenW/2, screenH-50))
     screen.blit(m, text_rect)
+
 
     pg.display.update()
 
@@ -199,7 +202,9 @@ collidables = []
 generate("prot","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\prot.png",30,(0,screenW),(0,screenH),20,20)
 
 legend_image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\legend.png")
-legend_rect = legend_image.get_rect(topleft=(screenW - 150, 10))  # adjust position as needed
+legend_image = pg.transform.scale(legend_image, (screenW,screenH))
+legend_rect = legend_image.get_rect()  # adjust position as needed
+Legend = Button("",100,50,(0,0),legendfunc)
 show_legend = False  # controls visibility
 
 start_ticks=pg.time.get_ticks()
@@ -226,9 +231,11 @@ while mainloop:
             pg.display.update()
             
     if stage != 5:
+        Legend.on_click()
+
         message = facts[player.name][count%len(facts[player.name])]
         m = my_font.render(message, False, (0, 255, 255))
-    
+
         if (pg.time.get_ticks()-start_ticks)/1000 >= 3:
             start_ticks=pg.time.get_ticks()
             count += 1
