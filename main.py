@@ -201,7 +201,7 @@ while mainloop:
             mainloop = False
             exit()
 
-    message = facts[player.name][count%3]
+    message = facts[player.name][count%len(facts[player.name])]
     m = my_font.render(message, False, (0, 255, 255))
 
     if (pg.time.get_ticks()-start_ticks)/1000 >= 3:
