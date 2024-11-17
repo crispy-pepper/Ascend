@@ -92,6 +92,7 @@ class CurrentCharacter(Character):
             self.images.clear()
             stage += 1
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\star.png")
+            self.name = "star"
         if len(self.images) > 60:
             self.images.clear()
             stage += 1

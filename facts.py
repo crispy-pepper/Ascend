@@ -48,4 +48,8 @@ facts = {
         "Fun Fact: The process of forming heavier elements from lighter ones is called nucleosynthesis. Most of the elements we’re made of, like carbon, nitrogen, and oxygen, were formed in stars that lived and died long before the Sun was born."
     ],  
 
+    "star":[
+        "hehehaha"
+    ]
+
 }
