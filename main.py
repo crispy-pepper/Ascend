@@ -90,7 +90,7 @@ class CurrentCharacter(Character):
         if len(self.images) > 30:
             self.images.clear()
             stage += 1
-            self.image = pg.image.load(characters[stage])
+            self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\star.png")
 
 
     def draw(self,screen):
@@ -134,8 +134,16 @@ def drawBackground(image):
     screen.blit(image, (0, 0))
 
 
+def draw_legend():
+    if show_legend:
+        screen.blit(legend_image, legend_rect.topleft)
+
+    
+
+
 def updateScreen():
     drawBackground(currentBackground)
+    draw_legend()
     for x in collidables:
         x.draw()
 
@@ -143,15 +151,26 @@ def updateScreen():
     player.draw(screen)
     player.transform()
 
+    mouse_x, mouse_y = pg.mouse.get_pos()
+    # check if its hovering over here
+    if legend_rect.collidepoint(mouse_x, mouse_y):
+        show_legend = True
+    else:
+        show_legend = False
+
     pg.display.update()
 
 stage = 0
 mainloop = True
-player = CurrentCharacter("name", characters[stage],25,25,(screenW//2,screenH//2),2)
+player = CurrentCharacter("name", "C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\prot.png",25,25,(screenW//2,screenH//2),2)
 
 currentBackground = "C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\Section1.png"
 collidables = []
 generate("name","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\prot.png",30,(0,screenW),(0,screenH),20,20)
+
+legend_image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\legend.png")
+legend_rect = legend_image.get_rect(topleft=(screenW - 150, 10))  # adjust position as needed
+show_legend = False  # controls visibility
 
 while mainloop:
     clock.tick(500)
