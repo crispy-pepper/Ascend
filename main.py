@@ -16,7 +16,6 @@ screen = pg.display.set_mode((screenW,screenH))
 
 pg.display.set_caption("Ascend The Stars!")
 
-characters = ["prot.jpg", "star.png"]
 characters = ["prot.jpg", "star.png", "galaxy.png", "nebula.png"]
 
 class Character(object):
@@ -93,6 +92,14 @@ class CurrentCharacter(Character):
             self.images.clear()
             stage += 1
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\star.png")
+        if len(self.images) > 60:
+            self.images.clear()
+            stage += 1
+            self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\galaxy.png")
+        if len(self.images) > 90:
+            self.images.clear()
+            stage += 1
+            self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\nebula.png")
 
 
     def draw(self,screen):
