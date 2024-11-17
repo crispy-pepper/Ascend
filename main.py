@@ -77,18 +77,11 @@ class CurrentCharacter(Character):
             if self.rect.colliderect(x.Rect()):
                 self.images.append(x)
 
-                if self.x+self.tw <= x.x:
-                    self.tw += abs(self.x+self.tw-(x.x+x.width))
-                else:
-                    self.tw += abs(x.x+x.width-self.x)
-
-                if self.y+self.th <= x.y:
-                    self.th += abs(self.y+self.th-(x.y,x.height))
-                else:
-                    self.th += abs(x.y+x.height-self.y)
-
                 self.x = min(self.x,x.x)
                 self.y = min(self.y,x.y)
+
+                self.tw = max(self.x+self.width,x.x+x.width)-self.x
+                self.th = max(self.y+self.height,x.y+x.height)-self.y
 
 
                 collidables.remove(x)
