@@ -88,16 +88,19 @@ class CurrentCharacter(Character):
 
     def transform(self):
         global stage
-        if len(self.images) > 30:
+        if len(self.images) > 15 and stage == 0:
+            self.images.clear()
+            stage += 1
+            self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\atom1.png")
+        elif len(self.images) >= 15 and stage == 1:
             self.images.clear()
             stage += 1
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\star.png")
-            self.name = "star"
-        if len(self.images) > 60:
+        elif len(self.images) > 60 and stage == 2:
             self.images.clear()
             stage += 1
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\galaxy.png")
-        if len(self.images) > 90:
+        elif len(self.images) > 90 and stage == 3:
             self.images.clear()
             stage += 1
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\nebula.png")
