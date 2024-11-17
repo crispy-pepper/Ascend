@@ -228,6 +228,11 @@ while mainloop:
             game_over = over_font.render("Game Over", False, (255, 255, 255))
             screen.blit(game_over, (100, 150))
             pg.display.update()
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    mainloop = False
+                    exit()
+                    break
             
     if stage != 5:
         Legend.on_click()
