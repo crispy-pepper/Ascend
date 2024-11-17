@@ -16,6 +16,7 @@ screen = pg.display.set_mode((screenW,screenH))
 pg.display.set_caption("Ascend The Stars!")
 
 characters = ["prot.jpg", "star.png"]
+characters = ["prot.jpg", "star.png", "galaxy.png", "nebula.png"]
 
 class Character(object):
     def __init__(self,name,image,width,height,pos):
