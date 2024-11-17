@@ -176,12 +176,13 @@ def updateScreen():
     drawBackground(currentBackground)
     if show_legend:
         draw_legend()
-    for x in collidables:
-        x.draw()
     Legend.draw()
     my_font = pg.font.SysFont('Comic Sans MS', 15)
     f = my_font.render("Legend", False, (0,0,0))
     screen.blit(f,(20,15))
+
+    for x in collidables:
+        x.draw()
     player.run()
     player.draw(screen)
     player.transform()
