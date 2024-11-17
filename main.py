@@ -115,7 +115,7 @@ class CurrentCharacter(Character):
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\nebula.png")
             collidables = []   
             self.name = "star"   
-            generate("star","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\neblua.png",3,(0,screenW),(0,screenH),100,100)
+            generate("star","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\nebula.png",3,(0,screenW),(0,screenH),100,100)
 
 
     def draw(self,screen):
