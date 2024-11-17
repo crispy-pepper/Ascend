@@ -77,12 +77,10 @@ class CurrentCharacter(Character):
             if self.rect.colliderect(x.Rect()):
                 self.images.append(x)
 
-                self.x = min(self.x,x.x)
-                self.y = min(self.y,x.y)
-
-                self.tw = max(self.x+self.width,x.x+x.width)-self.x
-                self.th = max(self.y+self.height,x.y+x.height)-self.y
-
+                self.x = min(self.x, x.x)
+                self.y = min(self.y, x.y)
+                self.tw = max(self.x + self.width, x.x + x.width) - self.x
+                self.th = max(self.y + self.height, x.y + x.height) - self.y
 
                 collidables.remove(x)
             
@@ -144,10 +142,10 @@ def updateScreen():
 mainloop = True
 
 
-player = CurrentCharacter("name","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\Bottom.jpg",25,25,(screenW//2,screenH//2),2)
+player = CurrentCharacter("name","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\prot.png",25,25,(screenW//2,screenH//2),2)
 currentBackground = "C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\Section1.png"
 collidables = []
-generate("name","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\Bottom.jpg",30,(0,screenW),(0,screenH),20,20)
+generate("name","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\prot.png",30,(0,screenW),(0,screenH),20,20)
 
 while mainloop:
     clock.tick(500)
