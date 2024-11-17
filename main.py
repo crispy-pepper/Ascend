@@ -93,6 +93,8 @@ class CurrentCharacter(Character):
             stage += 1
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\star.png")
             self.name = "star"
+            collidables = []
+            generate("prot","C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\star.png",20,(0,screenW),(0,screenH),30,30)
         if len(self.images) > 60:
             self.images.clear()
             stage += 1
