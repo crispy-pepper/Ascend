@@ -160,6 +160,9 @@ def updateScreen():
     else:
         show_legend = False
 
+    text_rect = m.get_rect(center=(screenW/2, screenH-50))
+    screen.blit(m, text_rect)
+
     pg.display.update()
 
 stage = 0
@@ -174,6 +177,14 @@ legend_image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\
 legend_rect = legend_image.get_rect(topleft=(screenW - 150, 10))  # adjust position as needed
 show_legend = False  # controls visibility
 
+start_ticks=pg.time.get_ticks()
+count = 0
+message = ''
+
+
+my_font = pg.font.SysFont('Comic Sans MS', 20)
+m = my_font.render(message, False, (0, 255, 255))
+
 while mainloop:
     clock.tick(500)
     keys = pg.key.get_pressed()
@@ -182,6 +193,14 @@ while mainloop:
         if event.type == pg.QUIT:
             mainloop = False
             exit()
+
+    message = facts[player.name][count%3]
+    m = my_font.render(message, False, (0, 255, 255))
+
+    if (pg.time.get_ticks()-start_ticks)/1000 >= 3:
+        start_ticks=pg.time.get_ticks()
+        count += 1
+
 
 
     updateScreen()
