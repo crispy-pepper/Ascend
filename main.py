@@ -88,7 +88,7 @@ class CurrentCharacter(Character):
 
     def transform(self):
         global stage,collidables
-        if len(self.images) > 15 and stage == 0:
+        if len(self.images) > 14 and stage == 0:
             self.images.clear()
             stage += 1
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\atom1.png")
@@ -100,16 +100,16 @@ class CurrentCharacter(Character):
             stage += 1
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\star.png")
             collidables = []   
-            self.name = "star"   
-            generate("star","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\atom1.png",15,(0,screenW),(0,screenH),30,30)
-        elif len(self.images) > 60 and stage == 2:
+            self.name = "atom1"   
+            generate("atom1","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\star.png",15,(0,screenW),(0,screenH),30,30)
+        elif len(self.images) > 14 and stage == 2:
             self.images.clear()
             stage += 1
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\galaxy.png")
             collidables = []   
             self.name = "star"   
             generate("star","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\galaxy.png",5,(0,screenW),(0,screenH),50,50)
-        elif len(self.images) > 90 and stage == 3:
+        elif len(self.images) > 4 and stage == 3:
             self.images.clear()
             stage += 1
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\nebula.png")
