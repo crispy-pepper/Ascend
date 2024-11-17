@@ -49,15 +49,32 @@ facts = {
     ],  
 
     "star":[
-        "hehehaha"
+        "Stars are massive balls of hot, glowing gas, primarily composed of hydrogen and helium."
+        "Stars produce energy through nuclear fusion, where hydrogen atoms fuse to form helium, releasing vast amounts of energy."
+        "The brightness of a star depends on its size, temperature, and distance from Earth. This is measured using its luminosity and apparent magnitude."
+        "Stars go through life cycles: they are born in nebulae, live for millions to billions of years, and die in spectacular ways (e.g., as white dwarfs, neutron stars, or black holes)."
+        "Our Sun is a medium-sized star, and it’s about halfway through its 10-billion-year lifespan!"
+        "The color of a star indicates its temperature. Blue stars are the hottest, while red stars are cooler."
     ], 
 
     "galaxy":[
-        "hehehaha"
+        "A galaxy is a vast collection of stars, gas, dust, and dark matter, bound together by gravity."
+        "The Milky Way is the galaxy that contains our Solar System, and it’s just one of billions in the universe."
+        "Galaxies come in various shapes: spiral, elliptical, and irregular. The Milky Way is a barred spiral galaxy."
+        "The size of a galaxy can range from a few thousand to hundreds of thousands of light-years across."
+        "Our galaxy, the Milky Way, is estimated to contain 100 to 400 billion stars!"
+        "Galaxies are often found in groups called galaxy clusters. Our Milky Way is part of the Local Group, which includes over 50 galaxies."
     ],
 
     "nebula":[
-        "hehehaha"
+        "A nebula is a vast cloud of gas and dust in space, often the birthplace of stars."
+        "Nebulae come in different types: emission nebulae, reflection nebulae, and dark nebulae, each with unique characteristics."
+        "Emission nebulae, like the Orion Nebula, glow brightly due to ionized gases (mainly hydrogen) being excited by radiation from nearby young, hot stars."
+        "Reflection nebulae don't emit light but instead reflect the light of nearby stars, often giving them a blue hue due to the scattering of light."
+        "Dark nebulae are dense clouds of dust and gas that block light from stars or other nebulae behind them, creating regions of darkness in the sky."
+        "Nebulae are the factories where new stars are born. The intense heat and pressure inside these clouds cause gas and dust to collapse and form new stars."
+        "Some nebulae are the remnants of dying stars, like the Crab Nebula, which is the remnant of a supernova explosion."
+        "The material in nebulae can also create planets, moons, and other objects as it condenses into dense regions."
     ],
 
 }
