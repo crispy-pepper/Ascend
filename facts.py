@@ -40,7 +40,7 @@ facts = {
 
     ],
 
-    "atoms":[
+    "atom1":[
         "As we increase the # of protons in the nucleus, heavier elements are formed in stars through nuclear fusion.",
         "These elements are formed in the cores of stars through nuclear reactions involving lighter elements like hydrogen and helium.",
         "The death of massive stars in supernovae (explosions) scatters these heavier elements into space, enriching the universe with the materials needed to form planets, life, and everything we see around us.",
@@ -50,6 +50,14 @@ facts = {
 
     "star":[
         "hehehaha"
-    ]
+    ], 
+
+    "galaxy":[
+        "hehehaha"
+    ],
+
+    "nebula":[
+        "hehehaha"
+    ],
 
 }
