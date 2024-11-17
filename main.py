@@ -87,7 +87,7 @@ class CurrentCharacter(Character):
                 collidables.remove(x)
 
     def transform(self):
-        global stage
+        global stage,collidables
         if len(self.images) > 30:
             self.images.clear()
             stage += 1
