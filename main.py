@@ -47,7 +47,6 @@ class CurrentCharacter(Character):
 
     def Rect(self):
         self.rect = pg.Rect(self.x,self.y,self.tw,self.th)
-        print(self.rect)
         return self.rect
     
     def run(self):
@@ -77,11 +76,23 @@ class CurrentCharacter(Character):
         for x in collidables:
             if self.rect.colliderect(x.Rect()):
                 self.images.append(x)
-                self.tw += x.width
-                self.th += x.height
-            
+
+                if self.x+self.tw < x.x+x.width:
+                    self.tw += abs(self.x+self.tw-(x.x+x.width))
+                else:
+                    self.tw += abs(self.x-x.x)
+
+                if self.y+self.th < x.y+x.height:
+                    self.th += abs(self.y+self.th-(x.y+x.height))
+                else:
+                    self.th = abs(self.y-x.y)
+
+                self.x = min(self.x,x.x)
+                self.y = min(self.y,x.y)
+
+
                 collidables.remove(x)
-                print("collide")
+            
 
         
     def draw(self,screen):
