@@ -88,21 +88,34 @@ class CurrentCharacter(Character):
 
     def transform(self):
         global stage,collidables
-        if len(self.images) > 30:
+        if len(self.images) > 15 and stage == 0:
+            self.images.clear()
+            stage += 1
+            self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\atom1.png")
+            collidables = []   
+            self.name = "hydro"   
+            generate("hydro","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\atom1.png",20,(0,screenW),(0,screenH),25,25)
+        elif len(self.images) >= 15 and stage == 1:
             self.images.clear()
             stage += 1
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\star.png")
-            self.name = "star"
-            collidables = []
-            generate("prot","C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\star.png",20,(0,screenW),(0,screenH),30,30)
-        if len(self.images) > 60:
+            collidables = []   
+            self.name = "star"   
+            generate("star","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\atom1.png",15,(0,screenW),(0,screenH),30,30)
+        elif len(self.images) > 60 and stage == 2:
             self.images.clear()
             stage += 1
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\galaxy.png")
-        if len(self.images) > 90:
+            collidables = []   
+            self.name = "star"   
+            generate("star","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\galaxy.png",5,(0,screenW),(0,screenH),50,50)
+        elif len(self.images) > 90 and stage == 3:
             self.images.clear()
             stage += 1
             self.image = pg.image.load("C:\\Users\\Oat_M\\Dropbox\PC\\Documents\\GitHub\\Ascend\\assets\\nebula.png")
+            collidables = []   
+            self.name = "star"   
+            generate("star","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\neblua.png",3,(0,screenW),(0,screenH),100,100)
 
 
     def draw(self,screen):
