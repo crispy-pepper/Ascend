@@ -85,7 +85,7 @@ class CurrentCharacter(Character):
                 if self.y+self.th < x.y+x.height:
                     self.th += abs(self.y+self.th-(x.y+x.height))
                 else:
-                    self.th = abs(self.y-x.y)
+                    self.th += abs(self.y-x.y)
 
                 self.x = min(self.x,x.x)
                 self.y = min(self.y,x.y)
