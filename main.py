@@ -174,12 +174,13 @@ def updateScreen():
     drawBackground(currentBackground)
     if show_legend:
         draw_legend()
-    for x in collidables:
-        x.draw()
     Legend.draw()
     my_font = pg.font.SysFont('Comic Sans MS', 15)
     f = my_font.render("Legend", False, (0,0,0))
     screen.blit(f,(20,15))
+
+    for x in collidables:
+        x.draw()
     player.run()
     player.draw(screen)
     player.transform()
@@ -227,6 +228,11 @@ while mainloop:
             game_over = over_font.render("Game Over", False, (255, 255, 255))
             screen.blit(game_over, (100, 150))
             pg.display.update()
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    mainloop = False
+                    exit()
+                    break
             
     if stage != 5:
         Legend.on_click()
