@@ -10,12 +10,12 @@ pg.font.init()
 
 clock = pg.time.Clock()
 
-
-
 screenW,screenH = pg.display.Info().current_w-100, pg.display.Info().current_h-100
 screen = pg.display.set_mode((screenW,screenH))
 
 pg.display.set_caption("Ascend The Stars!")
+
+characters = ["Bottom.jpg", "star.png"]
 
 class Character(object):
     def __init__(self,name,image,width,height,pos):
@@ -48,15 +48,15 @@ class CurrentCharacter(Character):
     def Rect(self):
         self.rect = pg.Rect(self.x,self.y,self.tw,self.th)
         return self.rect
-    
+
     def run(self):
         self.rect = self.Rect()
         if keys[pg.K_LEFT] and self.x > 0+self.width:
             self.x -= self.speed
             for i in self.images[1:]:
                 i.x -= self.speed
-            
-            
+
+
         if keys[pg.K_RIGHT] and self.x < screenW - self.width:
             self.x += self.speed
             for i in self.images[1:]:
@@ -83,11 +83,16 @@ class CurrentCharacter(Character):
                 self.tw = max(self.x+self.width,x.x+x.width)-self.x
                 self.th = max(self.y+self.height,x.y+x.height)-self.y
 
-
                 collidables.remove(x)
-            
 
-        
+    def transform(self):
+        global stage
+        if len(self.images) > 30:
+            self.images.clear()
+            stage += 1
+            self.image = pg.image.load(characters[stage])
+
+
     def draw(self,screen):
         self.image = pg.transform.scale(self.image, (self.width, self.height))
         screen.blit(self.image, (self.x, self.y))
@@ -96,7 +101,6 @@ class CurrentCharacter(Character):
             i.image = pg.transform.scale(i.image, (i.width, i.height))
             screen.blit(i.image, (i.x, i.y))
 
-        
 
 class Button(object):
     def __init__(self,image,width, height, pos,function):
@@ -110,7 +114,7 @@ class Button(object):
 
     def on_click(self):
         x, y = pg.mouse.get_pos()
-        
+
         if self.rect.collidepoint(x, y):
             if event.type == pg.MOUSEBUTTONDOWN:
                 if pg.mouse.get_pressed()[0]:
@@ -134,17 +138,16 @@ def updateScreen():
     drawBackground(currentBackground)
     for x in collidables:
         x.draw()
-        
+
     player.run()
     player.draw(screen)
+    player.transform()
 
     pg.display.update()
 
-
+stage = 0
 mainloop = True
-
-
-player = CurrentCharacter("name","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\Bottom.jpg",25,25,(screenW//2,screenH//2),2)
+player = CurrentCharacter("name", characters[stage],25,25,(screenW//2,screenH//2),2)
 currentBackground = "C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\Section1.png"
 collidables = []
 generate("name","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\assets\\Bottom.jpg",30,(0,screenW),(0,screenH),20,20)
@@ -152,7 +155,7 @@ generate("name","C:\\Users\\Oat_M\\Dropbox\\PC\\Documents\\GitHub\\Ascend\\asset
 while mainloop:
     clock.tick(500)
     keys = pg.key.get_pressed()
-    
+
     for event in pg.event.get():
         if event.type == pg.QUIT:
             mainloop = False
