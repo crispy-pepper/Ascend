@@ -144,11 +144,10 @@ class Button(object):
         if self.rect.collidepoint(x, y):
             if event.type == pg.MOUSEBUTTONDOWN:
                 if pg.mouse.get_pressed()[0]:
-    
                     self.function()
     
     def draw(self):
-        pg.draw.rect(screen,(255,255,255),self.rect)
+        pg.draw.rect(screen,(255,255,0),self.rect)
 
 def generate(name,image, integer, rangex,rangey, width,height):
     global collidables
@@ -178,6 +177,9 @@ def updateScreen():
     for x in collidables:
         x.draw()
     Legend.draw()
+    my_font = pg.font.SysFont('Comic Sans MS', 15)
+    f = my_font.render("Legend", False, (0,0,0))
+    screen.blit(f,(20,15))
     player.run()
     player.draw(screen)
     player.transform()
@@ -219,6 +221,8 @@ while mainloop:
         if event.type == pg.QUIT:
             mainloop = False
             exit()
+
+    Legend.on_click()
 
     message = facts[player.name][count%len(facts[player.name])]
     m = my_font.render(message, False, (0, 255, 255))
